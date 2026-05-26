@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Neon Kalp</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #1a1a2e, #000);
+}
+
+/* NEON KALP */
+.heart {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  background: #ff2bd6;
+  box-shadow: 0 0 25px #ff2bd6, 0 0 80px #ff2bd6;
+  animation: pulse 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 120px;
+  height: 120px;
+  background: #ff2bd6;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 25px #ff2bd6, 0 0 80px #ff2bd6;
+}
+
+.heart::before { top: -60px; left: 0; }
+.heart::after { left: 60px; top: 0; }
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+  50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.2); }
+  100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+}
+
+/* KAR */
+.snow {
+  position: absolute;
+  top: -10px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.snow span {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 10px;
+  animation: fall linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* YILDIZLAR */
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px white;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.8); }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="heart"></div>
+
+<div class="snow" id="snow"></div>
+
+<script>
+// KAR YARATMA
+const snowContainer = document.getElementById("snow");
+
+for (let i = 0; i < 80; i++) {
+  let snow = document.createElement("span");
+  snow.innerHTML = "❄";
+  snow.style.left = Math.random() * 100 + "vw";
+  snow.style.animationDuration = (Math.random() * 5 + 3) + "s";
+  snow.style.fontSize = (Math.random() * 10 + 10) + "px";
+  snowContainer.appendChild(snow);
+}
+
+// YILDIZLAR
+for (let i = 0; i < 40; i++) {
+  let star = document.createElement("div");
+  star.className = "star";
+  star.style.top = Math.random() * 30 + "vh";
+  star.style.left = Math.random() * 100 + "vw";
+  star.style.animationDelay = Math.random() * 2 + "s";
+  document.body.appendChild(star);
+}
+</script>
+<div align="center"> <p> <font face="Iceland" size="5" color="pink"> <br><br> ~ Kalbim Sana Karsı Boyle Atıyor ~
+</div>
+ <div align="center"> <p> <font face="Iceland" size="5" color="pink"> <br><br> ~ Bu Kalp Benden Sanaaa..~
+</div>
+</body>
+</html>
